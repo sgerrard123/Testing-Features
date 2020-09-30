@@ -6,21 +6,13 @@ Resource          ../POM.txt
 Resource          ../Common.robot
 Variables         SPPortal_Vars.py    # Variables
 Variables         SPCreateAndView_Vars.py
-a
 *** Variables ***
 
 *** Test Cases ***
 RLTOQA-18324:Verify the Cancel Reason Code Drop Down Menu Values
-	[documentation]    Regression
-	[tags]    Regression
+    [documentation]    Regression
+    [tags]    Regression
     Login To RialtoSp
-#    Navigate To Link    Order List
-#    Wait And Click Element    name=viewall
-#    Wait And Click Element    name=viewall
-#    Wait And Click Element    name=viewprocessing
-#    Wait And Click Element    name=viewcreated
-#    Navigate to Link    Find
-#    Clicking And Verifying    //table[@id='colorCheatSheet']//following::tbody[1]/tr[1]/td[4]/a    //li[@class='h3']/a[1]    Order
     Navigate To Link    Find Orders
     Wait Until Page Is Loaded
     Input Text    //input[@name='companyName']    AutoCust2
@@ -36,25 +28,23 @@ RLTOQA-18324:Verify the Cancel Reason Code Drop Down Menu Values
     ReasonForCancel   C:sdsasaa
     Sleep    ${min_sleep}
     select window    title=Service Provider Portal
-#    Logout
     [Teardown]    Close Browser
 
 RLTOQA-18325:Verify the Disconnect Reason Code Drop Down Menu Values
-    [Documentation]    Regression
-     Regression
+    [documentation]    Regression
+    [tags]    Regression
     Login To RialtoSp
     Navigate To Link    Customer Service Tool
     Enter Input    companyName    AutomationCustomerFinal
     Wait And Click Element    //*[text()='Lookup Customer Info']
-	Clicking And Verifying    //*[text()='(32761) AutoSipTrunking']    ${sp_cancelservice}    Disconnect Service Items
+    Clicking And Verifying    //*[text()='(32761) AutoSipTrunking']    ${sp_cancelservice}    Disconnect Service Items
     Clicking And Verifying    id=cancelServiceItemsHref    //*[text()='Disconnect Order']    Disconnect Order
     Wait Until Element Is Enabled    id=orderDisconReasonCd
     Page Should Contain Element    ${sp_updatebillingaccount}
     Wait And Click Element    ${sp_orderdisconnectreason}
-	Page Should Contain Element    //option[contains(text(),'Non-Pay')]
-	ReasonForCancel
-	select window    title=Service Provider Portal
-    ##Logout
+    Page Should Contain Element    //option[contains(text(),'Non-Pay')]
+    ReasonForCancel
+    select window    title=Service Provider Portal
     [Teardown]    Close Browser
 
 RLTOQA-18333:Cancel an ADD Order
@@ -63,7 +53,6 @@ RLTOQA-18333:Cancel an ADD Order
     Login To RialtoSp
     CancelAnOrder    typeaddorder
     select window    title=Service Provider Portal
-#    Logout
     [Teardown]    Close Browser
 
 *** keywords ***
